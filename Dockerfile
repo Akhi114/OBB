@@ -1,14 +1,15 @@
-# Use Eclipse Temurin Java 21 base image
+# Use a Java 21 JDK base image
 FROM eclipse-temurin:21-jdk-alpine
 
-# Set work directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the built JAR file (update your JAR name accordingly)
-COPY target/OBB-0.0.1-SNAPSHOT.jar app.jar
+# Copy the project files into the container
+COPY . .
 
-# Expose the port your app runs on (default 8080)
-EXPOSE 8080
+# Build the app using Maven
+RUN ./mvnw clean package -DskipTests
 
-# Run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Use the built JAR
+CMD ["java", "-jar", "target/OBB-0.0.1-SNAPSHOT.jar"]
+
