@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface BusRepository extends JpaRepository<Bus, Long> {
-    List<Bus> findByFromLocationAndToLocation(String from, String to);
+    List<Bus> findBySourceIgnoreCaseAndDestinationIgnoreCase(String source, String destination);
 }

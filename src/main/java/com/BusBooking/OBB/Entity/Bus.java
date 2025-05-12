@@ -2,19 +2,25 @@ package com.BusBooking.OBB.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Data;
 
+@Data
 @Entity
 public class Bus {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String fromLocation;
-    private String toLocation;
+
+    private String Name;
+    private String source;
+    private String destination;
     private String departureTime;
-    private String arrivalTime;
-    private Double price;
+    private int availableSeats;
+    private double fare;
 
     //Getters & Setters
+
 
     public Long getId() {
         return id;
@@ -24,20 +30,20 @@ public class Bus {
         this.id = id;
     }
 
-    public String getFromLocation() {
-        return fromLocation;
+    public String getSource() {
+        return source;
     }
 
-    public void setFromLocation(String fromLocation) {
-        this.fromLocation = fromLocation;
+    public void setSource(String source) {
+        this.source = source;
     }
 
-    public String getToLocation() {
-        return toLocation;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setToLocation(String toLocation) {
-        this.toLocation = toLocation;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public String getDepartureTime() {
@@ -48,19 +54,19 @@ public class Bus {
         this.departureTime = departureTime;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public int getAvailableSeats() {
+        return availableSeats;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
     }
 
-    public Double getPrice() {
-        return price;
+    public double getFare() {
+        return fare;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setFare(double fare) {
+        this.fare = fare;
     }
 }
