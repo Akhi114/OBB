@@ -7,9 +7,11 @@ WORKDIR /app
 # Copy the project files into the container
 COPY . .
 
+# Grant execute permission to the Maven wrapper script
+RUN chmod +x mvnw
+
 # Build the app using Maven
 RUN ./mvnw clean package -DskipTests
 
 # Use the built JAR
 CMD ["java", "-jar", "target/OBB-0.0.1-SNAPSHOT.jar"]
-
